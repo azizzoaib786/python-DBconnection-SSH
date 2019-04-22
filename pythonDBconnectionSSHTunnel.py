@@ -6,14 +6,14 @@ import sshtunnel
 from sshtunnel import SSHTunnelForwarder
 
 server = SSHTunnelForwarder(
-    ('10.0.3.147', 22),
-    ssh_username='deploy',
+    ('SSHdestionation', 22),
+    ssh_username='ssh_username',
     ssh_pkey='~/.ssh/id_rsa',
     remote_bind_address=('127.0.0.1', 3306)
 )
 server.start()
 
-con = pymysql.connect(host='127.0.0.1', user='root', passwd='mysql', db='backoffice_demo', port=server.local_bind_port)
+con = pymysql.connect(host='127.0.0.1', user='user', passwd='password', db='db', port=server.local_bind_port)
 
 with con:
     
